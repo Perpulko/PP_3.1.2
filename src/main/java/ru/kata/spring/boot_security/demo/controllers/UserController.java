@@ -1,12 +1,13 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.entityes.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import java.util.List;
-
+@Controller
 public class UserController {
 
     private final UserService userService;
@@ -52,5 +53,10 @@ public class UserController {
     public String deleteUser(@RequestParam("userId") int id) {
         userService.delete(id);
         return "redirect:/users";
+    }
+
+    @GetMapping("/user")
+    public String showUser() {
+        return "user";
     }
 }
